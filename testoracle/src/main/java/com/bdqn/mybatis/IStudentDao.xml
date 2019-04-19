@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bdqn.mybatis.IStudentDao">
+   <!-- 结果映射 -->
+	 <resultMap type="com.bdqn.mybatis.Student" id="stumap">
+		<id column="u_id" property="uid"/>
+		<result column="u_name" property="uname"/>
+		<result column="u_desc" property="udesc"/>
+		<result column="u_birthday" property="birthday"/>
+		<result column="u_gender" property="ugender"/>
+	</resultMap>
+	<!-- 存储过程
+	statementType:给定statement类型
+	 -->
+	<select  id="callProcedure" parameterType="map" statementType="CALLABLE">
+		{call pro_page(#{currentpage,mode=IN,jdbcType=NUMERIC},
+						#{pagesize,mode=IN,jdbcType=NUMERIC},
+						#{tablename,mode=IN,jdbcType=VARCHAR},
+						#{sqlwhere,mode=IN,jdbcType=VARCHAR},
+						#{ordertype,mode=IN,jdbcType=NUMERIC},
+						#{ordercolumn,mode=IN,jdbcType=VARCHAR},
+						#{returncolumn,mode=IN,jdbcType=VARCHAR},
+						#{resultlist,mode=OUT,jdbcType=CURSOR,resultMap=stumap},
+						#{countrecord,mode=OUT,jdbcType=NUMERIC},
+						#{totalpage,mode=OUT,jdbcType=NUMERIC},
+						#{message,mode=OUT,jdbcType=VARCHAR})}
+	</select>
+</mapper>
+
+
+
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 1 参数属性配置 -->
+	<!-- 引入数据库配置文件 -->
+	<properties resource="myoracle.properties"/>
+	<!-- 配置类型的短名或别名 -->
+	
+	<!-- 2 配置数据源相关参数 -->
+	<environments default="development">
+		<!-- 一个环境相当于一个数据库环境 -->
+		<environment id="development">
+			<!-- 事务管理
+			事务管理模式： 使用什么模式管理数据库事务. 
+				JDBC：默认的, 底层的事务管理模式
+				MANAGER：容器（Spring）的事务管理模式
+			 -->
+			<transactionManager type="JDBC" />
+			<!-- 数据源,  数据连接方式
+				type: 连接数据库的模式
+					POOLED ： 池化连接
+					UNPOOLED： 非池化连接
+                    JNDI
+			 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${oracle.driver}" />
+				<property name="url" value="${oracle.url}" />
+				<property name="username" value="${oracle.user}" />
+				<property name="password" value="${oracle.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!-- 3 引入SQL映射文件 -->
+	<mappers>
+		<package name="com.bdqn.mybatis"/>
+	</mappers>
+</configuration>
