@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.type.JdbcType;
 
+
 public class MybatisUtils {
 	private static SqlSessionFactory sqlSessionFactory = null;
 	//加载

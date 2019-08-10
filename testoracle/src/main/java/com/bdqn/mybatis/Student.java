@@ -6,6 +6,7 @@ import java.sql.Date;
 public class Student implements Serializable{
 	private Integer uid;
 	private String uname;
+
 	private String ugender;
 	private Date birthday;
 	private String udesc;
